@@ -1,3 +1,7 @@
+tensorflow
 keras
 h5py
 librosa
+SpeechRecognition
+pandas
+pocketsphinx

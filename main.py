@@ -11,11 +11,11 @@ from speech2text import local, cloud
 
 # Try local-based speech2text
 text = local.transcribe(sys.argv[1])
-print("LOCAL: " + text)
+print("LOCAL: " + str(text))
 
 # If sentence is not understandable - cloud speech2text
 text = cloud.transcribe(sys.argv[1])
-print("CLOUD: " + text)
+print("CLOUD: " + str(text))
 
 # Classify the words with text2classification
 classify.classify_sentence(text)
