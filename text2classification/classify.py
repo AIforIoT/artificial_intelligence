@@ -6,6 +6,7 @@ from os import path
 # Tensor flow dependencies
 import tensorflow as tf
 from tensorflow import keras
+import h5py
 
 # train model
 from text2classification.utils import codec
@@ -38,5 +39,8 @@ def classify_sentence(sentence):
 	print(sentence_data)
 	print(codec.decode_sentence(sentence))
 	print(loaded_model.predict(sentence_data))
+	
+	sess = tf.Session()
+	sess.close()
 
 	return loaded_model.predict(sentence_data)
