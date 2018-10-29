@@ -31,9 +31,7 @@ TRIE = "../models/trie"
 ds = Model(model, N_FEATURES, N_CONTEXT, alphabet, BEAM_WIDTH)
 
 def transcribe(AUDIO_FILE):
-      
-    ds = Model(model, N_FEATURES, N_CONTEXT, alphabet, BEAM_WIDTH)
-
+    
     fs, audio = wav.read(AUDIO_FILE)
     
     if fs != 16000:
@@ -50,10 +48,5 @@ def transcribe(AUDIO_FILE):
         return -1
 
 def loadModel():
-    print('Loading language model from files {} {}'.format(LANGUAGE_MODEL, TRIE))
-    lm_load_start = timer()
     
     ds.enableDecoderWithLM(alphabet, LANGUAGE_MODEL, TRIE, LM_WEIGHT, VALID_WORD_COUNT_WEIGHT)
-    
-    lm_load_end = timer() - lm_load_start
-    print('Loaded language model in {:.3}s.'.format(lm_load_end), file=sys.stderr)
