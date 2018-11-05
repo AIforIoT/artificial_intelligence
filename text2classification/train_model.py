@@ -38,8 +38,6 @@ def train():
 	label_light = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['light'])
 	label_blind = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['blind'])
 	label_plug = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['plug'])
-	
-	print(label_plug)
 
 	# Generate a vector of each row
 	train_command = np.asarray(train_command).flatten()
@@ -49,8 +47,6 @@ def train():
 	label_light = np.asarray(label_light).flatten()
 	label_blind = np.asarray(label_blind).flatten()
 	label_plug = np.asarray(label_plug).flatten()
-	
-	print(label_plug)
 
 	# Generate the training matrix (words * commands)
 	train_data=[]
@@ -58,11 +54,9 @@ def train():
 
 	# Replace the words by numbers to prepare for the NN
 	for i in range(0, len(train_command)):
-                print(train_command[i])
                 train_command[i]=codec.encode_sentence(train_command[i])
                 train_data.append(train_command[i])
                 train_labels.append([label_status[i] , label_location[i], label_light[i], label_blind[i], label_plug[i]])
-                print([label_status[i] , label_location[i], label_light[i], label_blind[i], label_plug[i]])
 
 	# Convert the number array to tensors (input of NN)
 	train_data = keras.preprocessing.sequence.pad_sequences(train_data, value=0, padding='post', maxlen = max_sentence_words)
