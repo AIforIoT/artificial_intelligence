@@ -40,5 +40,10 @@
 	"bath": 40,
 	"can": 41,
 	"you": 42,
-	"all": 43
+	"all": 43,
+	"raise": 44,
+	"lower": 45,
+	"blind": 46,
+	"blinds": 47,
+	"move": 48
 }

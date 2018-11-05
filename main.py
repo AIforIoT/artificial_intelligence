@@ -15,14 +15,14 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # Try local-based speech2text
 t_i = timer()
-text = local_deep.transcribe(sys.argv[1])
+#text = local_deep.transcribe(sys.argv[1])
 t_f = timer() - t_i
-print("LOCAL DEEPSPEECH " + str(text) + " - " + str(t_f))
+#print("LOCAL DEEPSPEECH " + str(text) + " - " + str(t_f))
 
 t_i = timer()
-text = local.transcribe(sys.argv[1])
+#text = local.transcribe(sys.argv[1])
 t_f = timer() - t_i
-print("LOCAL SPHINX: " + str(text) + " - " + str(t_f))
+#print("LOCAL SPHINX: " + str(text) + " - " + str(t_f))
 
 # If sentence is not understandable - cloud speech2text
 t_i = timer()

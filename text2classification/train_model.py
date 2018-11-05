@@ -11,6 +11,7 @@ import pandas as pd
 
 # Dicctionary functions
 from text2classification.utils import codec
+#from utils import codec
 
 # Tensor flow session
 sess = tf.Session()
@@ -20,9 +21,9 @@ PATH = path.dirname(path.realpath(__file__))
 # Variables for our NN
 vocab_size = 100
 max_sentence_words = 10
-num_outputs = 2
+num_outputs = 5
 num_hiddenNodes = 16
-num_hiddenLayers = 1
+num_hiddenLayers = 2
 iterations = 1000
 
 # Variable for CPU Deep learning
@@ -31,14 +32,25 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 def train():
 	# Read every column of the csv data file
 	train_command = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['command'])
+	
 	label_status = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['status'])
 	label_location = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['location'])
-	label_cloud = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['cloud'])
+	label_light = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['light'])
+	label_blind = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['blind'])
+	label_plug = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['plug'])
+	
+	print(label_plug)
 
 	# Generate a vector of each row
 	train_command = np.asarray(train_command).flatten()
+	
 	label_status = np.asarray(label_status).flatten()
 	label_location = np.asarray(label_location).flatten()
+	label_light = np.asarray(label_light).flatten()
+	label_blind = np.asarray(label_blind).flatten()
+	label_plug = np.asarray(label_plug).flatten()
+	
+	print(label_plug)
 
 	# Generate the training matrix (words * commands)
 	train_data=[]
@@ -46,9 +58,11 @@ def train():
 
 	# Replace the words by numbers to prepare for the NN
 	for i in range(0, len(train_command)):
-		train_command[i]=codec.encode_sentence(train_command[i])
-		train_data.append(train_command[i])
-		train_labels.append([label_status[i] , label_location[i]])
+                print(train_command[i])
+                train_command[i]=codec.encode_sentence(train_command[i])
+                train_data.append(train_command[i])
+                train_labels.append([label_status[i] , label_location[i], label_light[i], label_blind[i], label_plug[i]])
+                print([label_status[i] , label_location[i], label_light[i], label_blind[i], label_plug[i]])
 
 	# Convert the number array to tensors (input of NN)
 	train_data = keras.preprocessing.sequence.pad_sequences(train_data, value=0, padding='post', maxlen = max_sentence_words)
@@ -63,7 +77,7 @@ def train():
 	# Hidden layers
 	model.add(keras.layers.GlobalAveragePooling1D(name = "hiddenPool"))
 	for i in range(0, num_hiddenLayers):
-		model.add(keras.layers.Dense(num_hiddenNodes, activation=tf.nn.relu, name="hidden"))
+		model.add(keras.layers.Dense(num_hiddenNodes, activation=tf.nn.relu, name=("hidden_"+str(i))))
 
 	# Output layer
 	model.add(keras.layers.Dense(num_outputs, activation=tf.nn.sigmoid, name="output"))
