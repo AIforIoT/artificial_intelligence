@@ -23,7 +23,6 @@ def classify_sentence(sentence):
 
 	# Load weights into new model
 	loaded_model.load_weights(PATH+"/bin/model.h5")
-	print("Loaded text2classification model")
 
 	# evaluate loaded model
 	loaded_model.compile(optimizer=tf.train.AdamOptimizer(), loss='binary_crossentropy', metrics=['accuracy'])
@@ -34,10 +33,6 @@ def classify_sentence(sentence):
 
 	sentence_data.append(sentence)
 	sentence_data = keras.preprocessing.sequence.pad_sequences(sentence_data, value=0, padding='post', maxlen=10)
-
-	print(sentence_data)
-	print(codec.decode_sentence(sentence))
-	print(loaded_model.predict(sentence_data))
 	
 	sess = tf.Session()
 	sess.close()
