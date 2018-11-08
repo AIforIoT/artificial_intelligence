@@ -6,7 +6,6 @@ from os import path
 # Tensor flow dependencies
 import tensorflow as tf
 from tensorflow import keras
-import h5py
 
 # train model
 from text2classification.utils import codec

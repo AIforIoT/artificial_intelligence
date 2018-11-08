@@ -3,9 +3,12 @@
 This repository contains the source code for the AI module responsible for speech recognition and text classification.
 The code in this repository contains the following libraries:
 * Speech2text: AI module based on Google services or local speech recognition to transform speech (wav file) to text.
-* Text2classification: AI module to classify the text recognized in 2 labels (probabilities):
-	* Light (on/off)
+* Text2classification: AI module to classify the text recognized in 5 labels (probabilities):
+	* Status (on/off)
 	* Localization usage (yes/no)
+	* Light (yes/no)
+	* Blind (yes/no)
+	* Plug (yes/no)
 
 ## Getting Started
 
@@ -18,6 +21,7 @@ The libraries you must have to run this Module are:
 ```
 Python 3
 Tensorflow
+DeepSpeech
 H5py
 tqdm
 librosa
