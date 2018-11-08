@@ -45,5 +45,8 @@
 	"lower": 45,
 	"blind": 46,
 	"blinds": 47,
-	"move": 48
+	"move": 48,
+	"plug": 49,
+	"plugs": 50,
+	"stop": 51
 }

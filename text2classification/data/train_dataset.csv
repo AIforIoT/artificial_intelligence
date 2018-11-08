@@ -13,23 +13,24 @@ close the ilumination;0;0;1;0;0
 turn on lights;1;0;1;0;0
 lower all the blinds;0;0;0;1;0
 turn on the light;1;1;1;0;0
-activate lights;1;0;1;0;0
+;;;;;
 activate the blind;1;1;0;1;0
+stop the lightining;0;0;1;0;0
 close the light;0;1;1;0;0
 disconnect lights;0;0;1;0;0
 close the blinds;0;0;0;1;0
 switch off the lights;0;0;1;0;0
-turn on that switch;1;1;1;0;0
+;;;;;
 disconnect the blind;0;1;0;1;0
 set the light on;1;0;1;0;0
 brighten the room;1;0;1;0;0
 dim the room;0;0;1;0;0
-all up;1;0;0;1;0
+;;;;;
 light up the bath room;1;1;1;0;0
 turn off the lights in the bath room;0;1;1;0;0
 turn on the lights in the kitchen;1;1;1;0;0
 close the kitchen lights;0;1;1;0;0
-all down;0;0;0;1;0
+;;;;;
 can you turn on all the lights;1;0;1;0;0
 all the lights on;1;0;1;0;0
 all off;0;0;1;0;0
@@ -54,3 +55,26 @@ blinds up;1;0;0;1;0
 turn off that switch;0;1;1;0;0
 light up the kitchen;1;1;1;0;0
 can you turn off the light;0;1;1;0;0
+;;;;;
+open the plug;1;1;0;0;0
+turn on that plug;1;1;0;0;0
+start the plug;1;1;0;0;0
+switch on the plug;1;1;0;0;0
+turn all the plugs on;1;0;0;0;0
+plugs all up;1;0;0;0;0
+all the plugs turn on;1;0;0;0;0
+open all the plugs;1;0;0;0;0
+can you switch on the plug;1;1;0;0;0
+;;;;;
+close the plug;0;1;0;0;0
+turn off that plug;0;1;0;0;0
+stop the plug;0;1;0;0;0
+switch off the plug;0;1;0;0;0
+turn all the plugs off;0;0;0;0;0
+plugs all down;0;0;0;0;0
+close all the plugs;0;0;0;0;0
+can you turn on the plugs;0;0;0;0;0
+;;;;;
+;;;;;
+activate lights;1;0;1;0;0
+turn on that switch;1;1;1;0;0
