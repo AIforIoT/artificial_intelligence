@@ -8,7 +8,7 @@ import tensorflow as tf
 from tensorflow import keras
 
 # train model
-from text2classification.utils import codec
+from artificial_inteligence.text2classification.utils import codec
 
 #sentence = "switch on the light"
 PATH = path.dirname(path.realpath(__file__))

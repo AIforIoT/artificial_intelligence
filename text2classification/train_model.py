@@ -10,13 +10,11 @@ import numpy as np
 import pandas as pd
 
 # Dicctionary functions
-from text2classification.utils import codec
+from artificial_inteligence.text2classification.utils import codec
 #from utils import codec
 
 # Tensor flow session
 sess = tf.Session()
-
-PATH = path.dirname(path.realpath(__file__))
 
 # Variables for our NN
 vocab_size = 100
@@ -29,7 +27,7 @@ iterations = 1000
 # Variable for CPU Deep learning
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-def train():
+def train(PATH):
 	# Read every column of the csv data file
 	train_command = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['command'])
 	
