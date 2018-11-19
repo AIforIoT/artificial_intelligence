@@ -1,6 +1,3 @@
-# System dependencies
-import sys, os
-
 # Packages import
 from artificial_inteligence.text2classification import classify
 #from artificial_inteligence.speech2text import local, local_deep, cloud

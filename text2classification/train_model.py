@@ -1,20 +1,9 @@
-# OS dependencies
-import os
-import sys
-from os import path
-
-# Tensor flow dependencies
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
-import pandas as pd
 
 # Dicctionary functions
 from artificial_inteligence.text2classification.utils import codec
-#from utils import codec
-
-# Tensor flow session
-sess = tf.Session()
 
 # Variables for our NN
 vocab_size = 100
@@ -24,18 +13,10 @@ num_hiddenNodes = 16
 num_hiddenLayers = 2
 iterations = 1000
 
-# Variable for CPU Deep learning
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-
 def train(PATH):
 	# Read every column of the csv data file
-	train_command = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['command'])
-	
-	label_status = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['status'])
-	label_location = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['location'])
-	label_light = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['light'])
-	label_blind = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['blind'])
-	label_plug = pd.read_csv(PATH+"/data/train_dataset.csv", sep=";", usecols=['plug'])
+	csv_data = np.genfromtxt(PATH+'/data/train_dataset.csv', delimiter=';', dtype=(str))
+	train_command, label_status, label_location, label_light, label_blind, label_plug = list(csv_data.T)
 
 	# Generate a vector of each row
 	train_command = np.asarray(train_command).flatten()
@@ -52,8 +33,7 @@ def train(PATH):
 
 	# Replace the words by numbers to prepare for the NN
 	for i in range(0, len(train_command)):
-                train_command[i]=codec.encode_sentence(train_command[i])
-                train_data.append(train_command[i])
+                train_data.append(codec.encode_sentence(str(train_command[i])))
                 train_labels.append([label_status[i] , label_location[i], label_light[i], label_blind[i], label_plug[i]])
 
 	# Convert the number array to tensors (input of NN)

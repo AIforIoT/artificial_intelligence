@@ -1,5 +1,8 @@
-from os import path
+from os import path, environ
 from artificial_inteligence.text2classification import train_model
+
+# Variable for CPU Deep learning
+environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 PATH = path.dirname(path.realpath(__file__))
 

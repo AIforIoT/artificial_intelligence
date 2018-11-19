@@ -1,16 +1,9 @@
-# OS dependencies
-import os
-import sys
 from os import path
-
-# Tensor flow dependencies
 import tensorflow as tf
 from tensorflow import keras
 
-# train model
 from artificial_inteligence.text2classification.utils import codec
 
-#sentence = "switch on the light"
 PATH = path.dirname(path.realpath(__file__))
 
 def classify_sentence(sentence):
@@ -33,8 +26,5 @@ def classify_sentence(sentence):
 
 	sentence_data.append(sentence)
 	sentence_data = keras.preprocessing.sequence.pad_sequences(sentence_data, value=0, padding='post', maxlen=10)
-	
-	sess = tf.Session()
-	sess.close()
 
 	return loaded_model.predict(sentence_data)
