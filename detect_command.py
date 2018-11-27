@@ -15,15 +15,14 @@ def detect_cloud(AUDIO_FILE):
     
     return classiy_transcripted_text(text)
 
-    
 
 def detect_local(AUDIO_FILE):
 
     #text = local.transcribe(AUDIO_FILE)
-    print("LOCAL SPHINX: " + str(text))
+    #print("LOCAL SPHINX: " + str(text))
     
     #text = local_deep.transcribe(AUDIO_FILE)
-    print("LOCAL DEEPSPEECH " + str(text))
+    #print("LOCAL DEEPSPEECH " + str(text))
     
     return classiy_transcripted_text(text)
     

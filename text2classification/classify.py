@@ -6,19 +6,20 @@ from artificial_inteligence.text2classification.utils import codec
 
 PATH = path.dirname(path.realpath(__file__))
 
+# Load json and create model
+json_file = open(PATH+'/bin/model.json', 'r')
+loaded_model_json = json_file.read()
+json_file.close()
+loaded_model = keras.models.model_from_json(loaded_model_json)
+
+# Load weights into new model
+loaded_model.load_weights(PATH+"/bin/model.h5")
+loaded_model.compile(optimizer=tf.train.AdamOptimizer(), loss='binary_crossentropy', metrics=['accuracy'])
+
+# Flask compatibility
+loaded_model._make_predict_function()
+
 def classify_sentence(sentence):
-
-	# Load json and create model
-	json_file = open(PATH+'/bin/model.json', 'r')
-	loaded_model_json = json_file.read()
-	json_file.close()
-	loaded_model = keras.models.model_from_json(loaded_model_json)
-
-	# Load weights into new model
-	loaded_model.load_weights(PATH+"/bin/model.h5")
-
-	# evaluate loaded model
-	loaded_model.compile(optimizer=tf.train.AdamOptimizer(), loss='binary_crossentropy', metrics=['accuracy'])
 
 	# Process the sentence to a tensor
 	sentence_data=[]
