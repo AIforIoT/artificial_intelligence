@@ -7,13 +7,17 @@ from artificial_inteligence.speech2text import cloud
 thresold = 0.8
 actions = ['Status' , 'Location', 'Light', 'Blind', 'Plug'];
 status = ['L', 'H'];
+error = 'L', 'L', 'none', 'error'
 
 def detect_cloud(AUDIO_FILE):
 
     text = cloud.transcribe(AUDIO_FILE)
     #print("CLOUD: " + str(text))
     
-    return classiy_transcripted_text(text)
+    if text is not -1:
+        return classiy_transcripted_text(text)
+    else:
+        return error
 
 
 def detect_local(AUDIO_FILE):
