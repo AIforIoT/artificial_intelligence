@@ -1,18 +1,18 @@
 # Packages import
-from artificial_inteligence.text2classification import classify
+from artificial_intelligence.text2classification import classify
 #from artificial_inteligence.speech2text import local, local_deep, cloud
-from artificial_inteligence.speech2text import cloud
+from artificial_intelligence.speech2text import cloud
 
 # Sender variables
 thresold = 0.8
 actions = ['Status' , 'Location', 'Light', 'Blind', 'Plug'];
 status = ['L', 'H'];
-error = 'L', 'L', 'none', 'error'
+error = 'E', 'E', 'none', 'error'
 
 def detect_cloud(AUDIO_FILE):
 
     text = cloud.transcribe(AUDIO_FILE)
-    #print("CLOUD: " + str(text))
+    print("GOOGLE CLOUD: " + str(text))
     
     if text is not -1:
         return classiy_transcripted_text(text)
@@ -35,6 +35,8 @@ def classiy_transcripted_text(text):
     
     # Classify the words with text2classification - [0] numpy bug
     probabilites = classify.classify_sentence(text)[0]
+    if probabilites[0] is -1:
+        return error
 
     # Get the state and location probability
     state = probabilites[actions.index('Status')]

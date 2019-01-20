@@ -3,7 +3,7 @@ from tensorflow import keras
 import numpy as np
 
 # Dicctionary functions
-from artificial_inteligence.text2classification.utils import codec
+from artificial_intelligence.text2classification.utils import codec
 
 # Variables for our NN
 vocab_size = 100

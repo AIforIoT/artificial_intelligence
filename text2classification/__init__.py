@@ -1,5 +1,5 @@
 from os import path, environ
-from artificial_inteligence.text2classification import train_model
+from artificial_intelligence.text2classification import train_model
 
 # Variable for CPU Deep learning
 environ['TF_CPP_MIN_LOG_LEVEL'] = '2'

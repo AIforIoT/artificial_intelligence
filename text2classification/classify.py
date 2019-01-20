@@ -2,7 +2,7 @@ from os import path
 import tensorflow as tf
 from tensorflow import keras
 
-from artificial_inteligence.text2classification.utils import codec
+from artificial_intelligence.text2classification.utils import codec
 
 PATH = path.dirname(path.realpath(__file__))
 
@@ -24,6 +24,9 @@ def classify_sentence(sentence):
 	# Process the sentence to a tensor
 	sentence_data=[]
 	sentence = codec.encode_sentence(sentence)
+
+	if not len(sentence):
+		return [[-1,-1,-1,-1,-1]]
 
 	sentence_data.append(sentence)
 	sentence_data = keras.preprocessing.sequence.pad_sequences(sentence_data, value=0, padding='post', maxlen=10)
