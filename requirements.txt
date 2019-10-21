@@ -50,4 +50,4 @@ tensorflow==1.11.0
 termcolor==1.1.0
 tqdm==4.28.1
 urllib3==1.19.1
-Werkzeug==0.14.1
+Werkzeug==0.15.3
