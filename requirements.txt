@@ -46,7 +46,7 @@ SpeechRecognition==3.8.1
 SQLAlchemy==1.2.16
 ssh-import-id==5.6
 tensorboard==1.11.0
-tensorflow==1.11.0
+tensorflow==1.15.4
 termcolor==1.1.0
 tqdm==4.28.1
 urllib3==1.19.1
